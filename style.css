@@ -30,6 +30,7 @@ body{
     background: var(--body-color);
 }
 .container{
+    overflow-x: hidden;
     width: 100%;
     position: relative;
 }
@@ -579,15 +580,22 @@ nav{
 .contact{
     padding-block: 5em;
 }
-.contact-row{
+/* .contact-row{
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 50px;
-}
+} */
+ .contact-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 320px;
+    gap: 15px;
+
+ }
 .contact-column{
     display: flex;
-    width: 50%;
+    /* width: 50%; */
 }
 .contact-info{
     position: relative;
@@ -607,12 +615,16 @@ nav{
     color: var(--color-white);
     margin-bottom: 20px;
 }
-.contact-info>p{
+.contact-info>p, 
+.contact-info>p>a{
     display: flex;
     align-items: center;
     gap: 10px;
     color: var(--color-white);
     margin-block: 5px;
+}
+.contact-info>p>a{
+    text-decoration: none;
 }
 .contact-info p>i{
     font-size: 18px;
@@ -622,9 +634,14 @@ nav{
 }
 .contact-info:hover.contact-info h2,
 .contact-info:hover.contact-info p,
-.contact-info:hover.contact-info i{
+.contact-info:hover.contact-info i,
+.contact-info:hover.contact-info a{
     color: #777;
     z-index: 2;
+}
+
+.contact-info>p>a:hover{
+    color: var(--color-white) !important;
 }
 /* CONTACT FORM */
 .form-control{
@@ -739,6 +756,8 @@ footer{
     font-weight: 500;
     margin-inline: 20px;
 }
+
+
 /* MEDIA QUERY == 1024 PX / RESPONSIVE */
 @media only screen and (max-width: 1024px){
     .featured-text{
@@ -838,17 +857,19 @@ footer{
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 200px;
+        width: 100%;
         height:350px;
+        object-fit: cover;
+        
     }
-    .contact-row{
+    /* .contact-row{
         width: 100%;
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
         gap: 50px;
-    }
+    } */
     .contact-column{
         display: flex;
         justify-content: center;
@@ -866,19 +887,57 @@ footer{
     .input-field{
         width: 100%;
     }
-    .contact-row{
+    /* .contact-row{
         width: 100%;
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
         gap: 50px;
-    }
-    .contact-column{
+    } */
+    /* .contact-column{
         display: flex;
         justify-content: center;
         gap:50px ;
         min-height: 150px;
         width: 100%;
+    } */
+}
+
+@media only screen and (max-width: 600px){
+    .middle-footer .footer-menu{
+        display: grid; 
+        gap: 6px 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 24px;
     }
+    .middle-footer .footer-menu li{
+        /* background-color: red; */
+        align-items: center;
+        text-align: center;
+    }
+    .about-img{
+        margin-left: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .featured-name{
+        font-size: 30px;
+    }
+    .contact-row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    }
+    .top-header{
+        margin-bottom: 2em;
+    }
+    .skills .skills-row {
+        grid-gap: 0;
+    }    
+
 }
